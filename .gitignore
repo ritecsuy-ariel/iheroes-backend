@@ -1,0 +1,9 @@
+# Dependencys
+node_modules
+
+# Build
+dist
+
+# JWT Secret Key
+secret.key 
+

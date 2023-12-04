@@ -1,0 +1,45 @@
+{
+  "name": "zrp-challenge",
+  "version": "1.0.0",
+  "description": "A heroes API to save the world",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint src --ext .ts --fix",
+    "dev": "npx ts-node-dev src/server.ts",
+    "test": "vitest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/jsonwebtoken": "^9.0.5",
+    "@typescript-eslint/eslint-plugin": "^5.25.0",
+    "@typescript-eslint/parser": "^5.25.0",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "eslint": "^8.54.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "5.0.0-alpha.2",
+    "express": "^4.18.2",
+    "inversify": "^6.0.2",
+    "inversify-binding-decorators": "^4.0.0",
+    "inversify-express-utils": "^6.4.6",
+    "jsonwebtoken": "^9.0.2",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.3.17"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.19.5",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.10.3",
+    "@types/supertest": "^2.0.16",
+    "supertest": "^6.3.3",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.3.2",
+    "vitest": "^1.0.1"
+  }
+}
