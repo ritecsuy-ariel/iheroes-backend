@@ -1,29 +1,52 @@
+import bcrypt from 'bcrypt'
+
 import { ISignin, ISignup } from '../interfaces/authentication'
 import { BusinessError } from '../controllers/error'
-
-const data: ISignup[] = []
+import { User } from '../data-mapper/users'
+import { UserModel } from '../models/users'
 
 class AuthenticationService {
-    public async signup(user: ISignup) {
-        const exists = data.find((el) => el.email === user.email)
+    public async signup(signup: ISignup) {
+        const foundUser = await UserModel.findOne({
+            where: {
+                email: signup.email,
+            },
+        })
 
-        if (exists) {
+        if (foundUser) {
             throw new BusinessError('E-mail already in use.', 400)
         }
 
-        data.push(user)
+        const user = new User({ ...signup, password_hash: '' })
 
-        return user
+        await user.hash()
+        const savedUser = await user.save()
+
+        return savedUser
     }
 
-    public async signin(user: ISignin) {
-        const exists = data.find((el) => el.email === user.email)
-
-        if (!exists) {
+    public async signin(signin: ISignin) {
+        const foundUser = await UserModel.findOne({
+            where: {
+                email: signin.email,
+            },
+        })
+        if (!foundUser) {
             throw new BusinessError('E-mail does not exist.', 400)
         }
 
-        return exists
+        const passwordMatch = await bcrypt.compare(
+            signin.password,
+            foundUser.dataValues.password_hash,
+        )
+
+        if (!passwordMatch) {
+            throw new BusinessError('Password does not match.', 401)
+        }
+
+        delete foundUser.dataValues.password_hash
+
+        return foundUser
     }
 }
 

@@ -7,7 +7,7 @@ class HeroesController {
     public async create(req: Request, res: Response) {
         const heroe = await HeroesService.create({} as IHeroe)
 
-        res.send(heroe)
+        res.send({ message: 'Olá, mundo!' })
     }
 
     public async read(req: Request, res: Response) {

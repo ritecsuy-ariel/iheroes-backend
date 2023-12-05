@@ -7,3 +7,9 @@ dist
 # JWT Secret Key
 secret.key 
 
+# Environment variables
+.env
+.env.test
+
+# Sequelize config
+config

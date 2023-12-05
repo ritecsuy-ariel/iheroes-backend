@@ -1,13 +1,14 @@
 # Nível 1
 
 - [x] Autenticação e cadastro
-- [x] Criar JWT
-- [ ] Persistencia de dados
 
 # Nível 2
 
-- [ ] CRUD de heróis.
-- [ ] Validar rotas com JWT
+<!-- - [ ] CRUD de heróis. -->
+- [ ] Create Heroe
+- [ ] Read Heroe
+- [ ] Update Heroe
+- [ ] Delete Heroe
 
 # Nível 3
 
@@ -20,3 +21,7 @@
 # Nível 5
 
 - [ ] Alocação de heróis inteligente
+
+# Adicional
+
+- [ ] Validar dados de entrada

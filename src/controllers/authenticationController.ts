@@ -12,12 +12,14 @@ class AuthenticationController {
                 password: req.body.password,
             })
 
-            const token = generateToken(user.email)
+            const token = generateToken(req.body.email)
 
-            res.send({ token })
+            return res.send({ token, user })
         } catch (error: any) {
             res.status(error?.status || 500)
-            res.send({ message: error?.message || 'Internal server error.' })
+            return res.send({
+                message: error?.message || 'Internal server error.',
+            })
         }
     }
 
@@ -28,12 +30,14 @@ class AuthenticationController {
                 password: req.body.password,
             })
 
-            const token = generateToken(user.email)
+            const token = generateToken(req.body.email)
 
-            res.send({ token })
+            res.send({ token, user })
         } catch (error: any) {
             res.status(error.status || 500)
-            res.send({ message: error?.message || 'Internal server error.' })
+            return res.send({
+                message: error?.message || 'Internal server error.',
+            })
         }
     }
 }

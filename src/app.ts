@@ -1,14 +1,15 @@
 import express from 'express'
-import 'reflect-metadata'
 import cors, { CorsOptions } from 'cors'
 
 import { router } from './routes'
-import { auth } from './middlewares/auth'
+import { database } from './database'
+
+database.connect()
 
 const app = express()
 
 const corsOptions = {
-    oigin: '*',
+    origin: '*',
 } as CorsOptions
 
 app.use(cors(corsOptions))
@@ -18,7 +19,6 @@ app.get('/healthCheck', (req, res) => {
     res.send({ message: 'Hello World' })
 })
 
-// app.use(auth)
 app.use(router)
 
 export default app
