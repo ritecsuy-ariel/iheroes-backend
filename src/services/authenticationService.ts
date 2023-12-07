@@ -3,7 +3,7 @@ import bcrypt from 'bcrypt'
 import { ISignin, ISignup } from '../interfaces/authentication'
 import { BusinessError } from '../controllers/error'
 import { User } from '../data-mapper/users'
-import { UserModel } from '../models/users'
+import { UserModel } from '../models/usersModel'
 
 class AuthenticationService {
     public async signup(signup: ISignup) {

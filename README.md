@@ -16,7 +16,7 @@ Essa API corresponde ao teste técnico da ZRP para posição de desenvolvedor fu
 
 - Autenticação e cadastro ✅
 
-- CRUD de heróis ❌
+- CRUD de heróis ✅
 
 - Alocação de heróis ❌
 
@@ -52,7 +52,15 @@ Execute as migrations de banco de dados para construir as tabelas automáticamen
     npx sequelize-cli db:migrate
 ```
 
-## Passo 3 - Execute os testes
+## Passo 3 Executar as seeds
+
+Execute as seeds do projeto para obter uma inserir diversos heróis no banco de dados, execute o comando
+
+```sh
+  npx sequelize-cli db:seed:all
+```
+
+## Passo 4 - Execute os testes
 
 Execute os testes para garantir que a aplicação está funcionando corretamente, execute o comando:
 
@@ -60,7 +68,7 @@ Execute os testes para garantir que a aplicação está funcionando corretamente
     npm test
 ```
 
-## Passo 4 -  Iniciar aplicação
+## Passo 5 -  Iniciar aplicação
 
 O script dev inicia aplicação na porta 3333 em ambiente localhost, execute o comando:
 

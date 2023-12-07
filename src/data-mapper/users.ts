@@ -1,7 +1,7 @@
 import { randomUUID } from 'node:crypto'
 import bcrypt from 'bcrypt'
 
-import { UserModel } from '../models/users'
+import { UserModel } from '../models/usersModel'
 
 class User {
     public id: string

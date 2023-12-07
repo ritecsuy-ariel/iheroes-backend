@@ -13,3 +13,6 @@ secret.key
 
 # Sequelize config
 config
+
+# Code coverage reports
+coverage

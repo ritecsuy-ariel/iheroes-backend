@@ -6,7 +6,7 @@ const heroesRouter = express.Router()
 
 heroesRouter.post('/heroes', HeroesController.create)
 heroesRouter.get('/heroes', HeroesController.read)
-heroesRouter.put('/heroes', HeroesController.update)
-heroesRouter.delete('/heroes', HeroesController.delete)
+heroesRouter.put('/heroes/:id', HeroesController.update)
+heroesRouter.delete('/heroes/:id', HeroesController.delete)
 
 export { heroesRouter }

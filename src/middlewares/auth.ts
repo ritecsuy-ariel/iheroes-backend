@@ -31,7 +31,7 @@ export function auth(req: Request, res: Response, next: NextFunction) {
         req.body.bearer = decoded.email
     } catch (error: any) {
         res.status(error?.status || 403)
-        return res.send({ message: error?.message || 'Internal server error.' })
+        return res.send({ message: error?.message })
     }
     next()
 }
