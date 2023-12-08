@@ -1,7 +1,6 @@
 # Nível 1
 
 - [x] Autenticação e cadastro
-- [ ] Force internal server error on unit test
 
 # Nível 2
 
@@ -13,18 +12,18 @@
 - [x] Delete Heroe
 - [ ] Testes unitários heroes CRUD
 
-# Nível 3
+# Nível 3 && Nível 4 && Nível 5
 
 - [ ] Alocação dos heróis
-
-# Nível 4
-
-- [ ] Histórico de ameaças
-
-# Nível 5+
-
-- [ ] Alocação de heróis inteligente
+- [ ] Conectar Socket.io
+- [ ] Definir herói para resolver ameaça
+- [ ] Registrar histórico de ameaça
+- [ ] Agendar o fim da batalha
+- [ ] Definir heróis para resolver ameaça (inteligente)
 
 # Adicional
 
-- [ ] Validar dados de entrada
+- [ ] Criar função para capturar erros
+- [ ] Forçar erro 500 nos testes unitários
+- [ ] Validar entrada de dados HTTP
+- [ ] Criar token de aplicação para Socket.io
