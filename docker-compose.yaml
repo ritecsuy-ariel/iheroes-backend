@@ -11,3 +11,11 @@ services:
       POSTGRES_USER: docker
     ports:
       - 5432:5432
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: docker
+      MONGO_INITDB_ROOT_PASSWORD: dockerpwd
+    ports:
+      - 27017:27017

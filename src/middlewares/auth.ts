@@ -11,7 +11,7 @@ interface IJwtPayload extends JwtPayload {
 
 export function generateToken(email: string) {
     const token = jwt.sign({ email }, privateKey, {
-        expiresIn: 60 * 60,
+        // expiresIn: 60 * 60,
     })
 
     return `Bearer ${token}`

@@ -2,6 +2,7 @@ import { Request, Response } from 'express'
 
 import HeroesService from '../services/heroesService'
 import { HeroesRank } from '../enums/rank'
+import { handleError } from './error'
 
 class HeroesController {
     public async create(req: Request, res: Response) {
@@ -18,26 +19,18 @@ class HeroesController {
 
             res.send({ heroe })
         } catch (error: any) {
-            console.log(error)
-            res.status(error?.status || 500)
-            return res.send({
-                message: error?.message || 'Internal server error.',
-            })
+            return handleError(req, res, error)
         }
     }
 
     public async read(req: Request, res: Response) {
         try {
-            const { page } = req.query as any
-            const heroes = await HeroesService.read(page)
+            const { page, available } = req.query as any
+            const heroes = await HeroesService.read(page, available)
 
             res.send(heroes)
         } catch (error: any) {
-            console.log(error)
-            res.status(error?.status || 500)
-            return res.send({
-                message: error?.message || 'Internal server error.',
-            })
+            return handleError(req, res, error)
         }
     }
 
@@ -56,19 +49,19 @@ class HeroesController {
 
             res.send(heroe)
         } catch (error: any) {
-            console.log(error)
-            res.status(error?.status || 500)
-            return res.send({
-                message: error?.message || 'Internal server error.',
-            })
+            return handleError(req, res, error)
         }
     }
 
     public async delete(req: Request, res: Response) {
-        const { id } = req.params as any
-        const status = await HeroesService.delete(id)
+        try {
+            const { id } = req.params as any
+            const status = await HeroesService.delete(id)
 
-        res.send({ status: status === 1 })
+            res.send({ status: status === 1 })
+        } catch (error: any) {
+            return handleError(req, res, error)
+        }
     }
 }
 

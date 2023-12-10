@@ -9,13 +9,6 @@ describe('Authentication routes', () => {
     let signup: ISignup
     let signin: ISignin
 
-    // beforeAll(() => {
-    //     process.env.NODE_ENV = 'test'
-    //     execSync(
-    //         'npx sequelize-cli db:migrate --name 20231205174035-create-users.js ',
-    //     )
-    // })
-
     beforeEach(async () => {
         signup = {
             name: 'Jhon Doe',
@@ -28,12 +21,6 @@ describe('Authentication routes', () => {
             password: '123457',
         }
     })
-
-    // afterAll(() => {
-    //     execSync(
-    //         'npx sequelize-cli db:migrate:undo --name 20231205174035-create-users.js',
-    //     )
-    // })
 
     it('Should be able to signup', async () => {
         const { statusCode } = await request(app)

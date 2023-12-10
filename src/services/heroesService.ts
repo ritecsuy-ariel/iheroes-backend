@@ -1,6 +1,8 @@
+import { Op } from 'sequelize'
 import { Heroe } from '../data-mapper/heroes'
 import { IHeroe } from '../interfaces/heroe'
 import { HeroesModel } from '../models/heroesModel'
+import { PaginatorHelper } from '../shared/paginatorHelper'
 
 class HeroesService {
     public async create(data: IHeroe): Promise<IHeroe> {
@@ -11,15 +13,12 @@ class HeroesService {
         return savedHeroe
     }
 
-    public async read(page = 1): Promise<IHeroe[]> {
-        const paginatorHelper = {
-            limit: 10,
-            offset: page * 10 - 10,
-        }
+    public async read(page = 1, available = true): Promise<IHeroe[]> {
+        const paginatorHelper = new PaginatorHelper(page)
 
         const heroes = await HeroesModel.findAll({
             where: {
-                available: true,
+                available,
             },
             limit: paginatorHelper.limit,
             offset: paginatorHelper.offset,
@@ -41,6 +40,16 @@ class HeroesService {
                 id,
             },
         }) as any
+    }
+
+    public async updateMany(data: IHeroe, ids: number[]): Promise<void> {
+        await HeroesModel.update(data, {
+            where: {
+                id: {
+                    [Op.in]: ids,
+                },
+            },
+        })
     }
 
     public async delete(id: number): Promise<number> {

@@ -2,6 +2,7 @@ import { Request, Response } from 'express'
 
 import AuthenticationService from '../services/authenticationService'
 import { generateToken } from '../middlewares/auth'
+import { handleError } from './error'
 
 class AuthenticationController {
     public async signup(req: Request, res: Response) {
@@ -16,10 +17,7 @@ class AuthenticationController {
 
             return res.send({ token, user })
         } catch (error: any) {
-            res.status(error?.status || 500)
-            return res.send({
-                message: error?.message || 'Internal server error.',
-            })
+            return handleError(req, res, error)
         }
     }
 
@@ -34,10 +32,7 @@ class AuthenticationController {
 
             res.send({ token, user })
         } catch (error: any) {
-            res.status(error.status || 500)
-            return res.send({
-                message: error?.message || 'Internal server error.',
-            })
+            return handleError(req, res, error)
         }
     }
 }

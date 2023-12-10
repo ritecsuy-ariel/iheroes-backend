@@ -1,7 +1,8 @@
 import { Sequelize, Options } from 'sequelize'
 import { env } from '../env'
+import mongoose from 'mongoose'
 
-const databaseOptions: Options = {
+const postgresOptions: Options = {
     dialect: env.DB_TYPE,
     host: env.DB_HOST,
     port: env.DB_PORT,
@@ -12,18 +13,39 @@ const databaseOptions: Options = {
     logging: false,
 }
 
-const sequelize = new Sequelize(databaseOptions)
+const sequelize = new Sequelize(postgresOptions)
 
-async function connect() {
+async function postgresConnect() {
     try {
         await sequelize.authenticate()
-        console.log('Connection has been established successfully.')
+        console.log('\x1b[36mPostgres connection has been established.\x1b[37m')
+        return true
     } catch (error) {
-        console.error('Unable to connect to the database: ', error)
+        console.error(
+            '\x1b[31mUnable to connect to the postgres  database: \x1b[37m',
+            error,
+        )
+        return false
+    }
+}
+async function mongodbConnect() {
+    try {
+        await mongoose.connect(env.MONGODB_CONNECT, {
+            dbName: env.MONGODB_NAME,
+        })
+        console.log('\x1b[36mMongoDB Connection has been established.\x1b[37m')
+        return true
+    } catch (error) {
+        console.error(
+            '\x1b[31Unable to connect to the mongodb database: \x1b[37m',
+            error,
+        )
+        return false
     }
 }
 
 export const database = {
-    connect,
+    postgresConnect,
+    mongodbConnect,
     sequelize,
 }

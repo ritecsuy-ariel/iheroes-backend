@@ -18,23 +18,32 @@ Essa API corresponde ao teste técnico da ZRP para posição de desenvolvedor fu
 
 - CRUD de heróis ✅
 
-- Alocação de heróis ❌
+- Alocação de heróis ✅
 
-- Histórico de ameaças ❌
+- Histórico de ameaças ✅
 
-- Alocação de heróis inteligente ❌
+- Alocação de heróis inteligente ✅
 
 # Tecnologias
 
 - Node.js
+- Jsonwebtoken
+- Express
+- Cors
+- Node-schedule
+- Postgres
+- MongoDB
+- Docker
 
 # Get Started
 
-Para iniciar o projeto em um ambiente localhost, é necessário um banco de dados do tipo postgres.
+O ambiente do projeto está dockerizado no arquivo e pode ser executado com o comando:
 
-Por segurança, as configurações de variáveis de ambiente necessárias para executar o projeto não estão incluídas no git.
+```sh
+    docker-compose up
+```
 
-Obtenha as configurações de banco de dados necessárias antes de continuar o passo a passo.
+Seguindo boas práticas de segurança da informação, variáveis de ambiente necessárias para executar o projeto não estão incluídas neste repositório.
 
 ## Passo 1 - Instalar as dependencias
 

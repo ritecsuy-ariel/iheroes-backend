@@ -4,7 +4,8 @@ import cors, { CorsOptions } from 'cors'
 import { router } from './routes'
 import { database } from './database'
 
-database.connect()
+database.postgresConnect()
+database.mongodbConnect()
 
 const app = express()
 

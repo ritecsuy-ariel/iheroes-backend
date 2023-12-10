@@ -1,6 +1,8 @@
+import { ThreatsRank } from '../enums/rank'
+
 interface ILocation {
-    lat: string
-    lng: string
+    lat: number
+    lng: number
 }
 
 interface IMonster {
@@ -11,7 +13,7 @@ interface IMonster {
 
 export interface IOccurrence {
     location: ILocation[]
-    dangerLevel: string
+    dangerLevel: ThreatsRank
     monsterName: string
     monster: IMonster
 }

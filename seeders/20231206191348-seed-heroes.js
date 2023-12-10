@@ -6,7 +6,7 @@ module.exports = {
         return queryInterface.bulkInsert('heroes', [
             {
                 name: 'Iron-Man',
-                rank: 'S',
+                rank: 4,
                 available: true,
                 latitude: -7.676105964884176,
                 longitude: -16.43210812419895,
@@ -14,7 +14,7 @@ module.exports = {
             },
             {
                 name: 'Black-Panther',
-                rank: 'S',
+                rank: 4,
                 available: true,
                 latitude: -2.173105924884176,
                 longitude: 51.83230512419895,
@@ -22,7 +22,7 @@ module.exports = {
             },
             {
                 name: 'Spider-Man',
-                rank: 'S',
+                rank: 4,
                 available: true,
                 latitude: 27.176105964884176,
                 longitude: 6.23210812419895,
@@ -30,7 +30,7 @@ module.exports = {
             },
             {
                 name: 'Jean Grey',
-                rank: 'S',
+                rank: 4,
                 available: true,
                 latitude: 32.27610596488417,
                 longitude: 1.43210812419895,
@@ -38,7 +38,7 @@ module.exports = {
             },
             {
                 name: 'Wolverine',
-                rank: 'S',
+                rank: 4,
                 available: true,
                 latitude: 33.67610596488417,
                 longitude: -6.42340812419895,
@@ -46,7 +46,7 @@ module.exports = {
             },
             {
                 name: 'Superman',
-                rank: 'S',
+                rank: 4,
                 available: true,
                 latitude: 65.67610596488417,
                 longitude: -14.42340812419895,
@@ -54,7 +54,7 @@ module.exports = {
             },
             {
                 name: 'Batman',
-                rank: 'S',
+                rank: 4,
                 available: true,
                 latitude: 51.67610596488417,
                 longitude: 4.42340812419895,
@@ -62,7 +62,7 @@ module.exports = {
             },
             {
                 name: 'Black Widow',
-                rank: 'A',
+                rank: 3,
                 available: true,
                 latitude: 91.27610596488417,
                 longitude: -33.43210812419895,
@@ -70,7 +70,7 @@ module.exports = {
             },
             {
                 name: 'Star-Lord',
-                rank: 'A',
+                rank: 3,
                 available: true,
                 latitude: 86.47620596488417,
                 longitude: -16.43210812419895,
@@ -78,7 +78,7 @@ module.exports = {
             },
             {
                 name: 'Moon Knight',
-                rank: 'A',
+                rank: 3,
                 available: true,
                 latitude: 23.676105964884176,
                 longitude: -1.43210812419895,
@@ -86,7 +86,7 @@ module.exports = {
             },
             {
                 name: 'Winter Soldier',
-                rank: 'A',
+                rank: 3,
                 available: true,
                 latitude: -51.67610596488417,
                 longitude: 78.43210812419895,
@@ -94,7 +94,7 @@ module.exports = {
             },
             {
                 name: 'Capitain America',
-                rank: 'A',
+                rank: 3,
                 available: true,
                 latitude: 2.676105964884176,
                 longitude: 16.43210812419895,
@@ -102,7 +102,7 @@ module.exports = {
             },
             {
                 name: 'Flash',
-                rank: 'A',
+                rank: 3,
                 available: true,
                 latitude: 21.676105964884176,
                 longitude: 9.43210812419895,
@@ -110,7 +110,7 @@ module.exports = {
             },
             {
                 name: 'Robin',
-                rank: 'B',
+                rank: 2,
                 available: true,
                 latitude: 87.27105964884176,
                 longitude: 67.43210812419895,
@@ -118,7 +118,7 @@ module.exports = {
             },
             {
                 name: 'Miles Morales',
-                rank: 'B',
+                rank: 2,
                 available: true,
                 latitude: -12.676105964884176,
                 longitude: 41.43210812419895,
@@ -126,7 +126,7 @@ module.exports = {
             },
             {
                 name: 'Valkyrie',
-                rank: 'B',
+                rank: 2,
                 available: true,
                 latitude: -7.676105964884176,
                 longitude: -16.43210812419895,
@@ -134,7 +134,7 @@ module.exports = {
             },
             {
                 name: 'Ant-Man',
-                rank: 'B',
+                rank: 2,
                 available: true,
                 latitude: 12.676105964884176,
                 longitude: 31.43210812419895,
@@ -142,7 +142,7 @@ module.exports = {
             },
             {
                 name: 'Cyclops',
-                rank: 'B',
+                rank: 2,
                 available: true,
                 latitude: 92.67610596488417,
                 longitude: -78.43210812419895,
@@ -150,7 +150,7 @@ module.exports = {
             },
             {
                 name: 'Doctor Strange',
-                rank: 'B',
+                rank: 2,
                 available: true,
                 latitude: 10.67610596488417,
                 longitude: -24.43210812419895,
@@ -158,7 +158,7 @@ module.exports = {
             },
             {
                 name: 'Green Lantern',
-                rank: 'B',
+                rank: 2,
                 available: true,
                 latitude: -44.67610596488417,
                 longitude: 76.43210812419895,
@@ -166,7 +166,7 @@ module.exports = {
             },
             {
                 name: 'Professor X',
-                rank: 'B',
+                rank: 2,
                 available: true,
                 latitude: 1.67610596488417,
                 longitude: 2.43210812419895,
@@ -174,7 +174,7 @@ module.exports = {
             },
             {
                 name: 'Human Torch',
-                rank: 'B',
+                rank: 2,
                 available: true,
                 latitude: 44.27610596488417,
                 longitude: -30.43210812419895,
@@ -182,7 +182,7 @@ module.exports = {
             },
             {
                 name: 'Nightwing',
-                rank: 'C',
+                rank: 1,
                 available: true,
                 latitude: 10.67610596488417,
                 longitude: -2.43210812419895,
@@ -190,7 +190,7 @@ module.exports = {
             },
             {
                 name: 'Ghost Rider',
-                rank: 'C',
+                rank: 1,
                 available: true,
                 latitude: -59.67610596488417,
                 longitude: 60.43210812419895,
@@ -198,7 +198,7 @@ module.exports = {
             },
             {
                 name: 'Daredevil',
-                rank: 'C',
+                rank: 1,
                 available: true,
                 latitude: -39.67610596488417,
                 longitude: -14.43210812419895,
@@ -206,7 +206,7 @@ module.exports = {
             },
             {
                 name: 'Rorschach',
-                rank: 'C',
+                rank: 1,
                 available: true,
                 latitude: 40.67610596488417,
                 longitude: 90.43210812419895,
@@ -214,7 +214,7 @@ module.exports = {
             },
             {
                 name: 'The Comedian',
-                rank: 'C',
+                rank: 1,
                 available: true,
                 latitude: -4.67610596488417,
                 longitude: -92.43210812419895,
@@ -222,7 +222,7 @@ module.exports = {
             },
             {
                 name: 'Hawkeye',
-                rank: 'C',
+                rank: 1,
                 available: true,
                 latitude: -4.67610596488417,
                 longitude: 32.43210812419895,
@@ -230,7 +230,7 @@ module.exports = {
             },
             {
                 name: 'Alex Wilder',
-                rank: 'C',
+                rank: 1,
                 available: true,
                 latitude: 23.67610596488417,
                 longitude: -12.43210812419895,
@@ -238,7 +238,7 @@ module.exports = {
             },
             {
                 name: 'Invisible Woman',
-                rank: 'C',
+                rank: 1,
                 available: true,
                 latitude: -33.67610596488417,
                 longitude: -42.43210812419895,
@@ -246,7 +246,7 @@ module.exports = {
             },
             {
                 name: 'Swordsman',
-                rank: 'C',
+                rank: 1,
                 available: true,
                 latitude: -81.67610596488417,
                 longitude: 2.43210812419895,

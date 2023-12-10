@@ -3,7 +3,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
     async up(queryInterface, Sequelize) {
-        await queryInterface.createTable('heroes', {
+        await queryInterface.createTable('threats', {
             id: {
                 field: 'id',
                 type: Sequelize.DataTypes.INTEGER,
@@ -18,7 +18,7 @@ module.exports = {
                 type: Sequelize.DataTypes.SMALLINT,
                 allowNull: false,
             },
-            available: {
+            status: {
                 type: Sequelize.DataTypes.BOOLEAN,
                 allowNull: false,
             },
@@ -46,6 +46,6 @@ module.exports = {
     },
 
     async down(queryInterface, Sequelize) {
-        await queryInterface.dropTable('heroes')
+        await queryInterface.dropTable('threats')
     },
 }

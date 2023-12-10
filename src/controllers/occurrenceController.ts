@@ -1,23 +1,29 @@
 import { Request, Response } from 'express'
+import { scheduleJob } from 'node-schedule'
 import { IOccurrence } from '../interfaces/occurrence'
+import { handleError } from './error'
+import OccurrenceService from '../services/occurrenceService'
+import HeroesService from '../services/heroesService'
 
 class OccurrenceController {
     public async create(req: Request, res: Response) {
         try {
-            console.log('An occurrence is being resolved')
             const occurrence = req.body as IOccurrence
-            console.log(occurrence)
-            // find heroes
-            // create battle
-            // schedule battle end
-            // respond socket.io
-            res.send({ status: true }).status(200)
-        } catch (error: any) {
-            console.log(error)
-            res.status(error?.status || 500)
-            return res.send({
-                message: error?.message || 'Internal server error.',
+
+            const battle = await OccurrenceService.create(occurrence)
+
+            const startTime = new Date(Date.now() + battle.duration)
+
+            scheduleJob(startTime, async () => {
+                const heroes = battle.heroes.map((el) => el.id)
+
+                const data: any = { available: true }
+                await HeroesService.updateMany(data, heroes)
             })
+
+            res.send({ battle })
+        } catch (error: any) {
+            return handleError(req, res, error)
         }
     }
 }

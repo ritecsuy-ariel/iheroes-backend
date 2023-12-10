@@ -17,6 +17,9 @@ const envSchema = z.object({
     DB_USERNAME: z.string(),
     DB_PASSWORD: z.string(),
     DB_NAME: z.string(),
+    MONGODB_NAME: z.string(),
+    MONGODB_CONNECT: z.string(),
+    APP_TOKEN: z.string(),
     NODE_PORT: z.coerce.number().default(3333),
 })
 

@@ -1,18 +1,18 @@
-import { HeroesRank } from '../enums/rank'
+import { ThreatsRank } from '../enums/rank'
 
-export interface IHeroe {
+export interface IThreat {
     name: string
-    rank: HeroesRank
-    available: boolean
+    rank: ThreatsRank
+    status: boolean
     latitude: number
     longitude: number
 }
 
-export interface IHeroeModel {
+export interface IThreatModel {
     id: number
     name: string
     rank: number
-    available: boolean
+    status: boolean
     latitude: number
     longitude: number
     created_at: Date

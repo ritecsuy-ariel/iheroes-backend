@@ -1,40 +1,16 @@
-import { it, describe, beforeEach, expect, beforeAll, afterAll } from 'vitest'
+import { it, describe, beforeEach, expect } from 'vitest'
 import request from 'supertest'
-import { execSync } from 'node:child_process'
-
 import app from '../src/app'
+
 import { HeroesRank } from '../src/enums/rank'
 import { IHeroe } from '../src/interfaces/heroe'
 import { ISignin, ISignup } from '../src/interfaces/authentication'
+import { env } from '../src/env'
 
 describe('Heroes routes', () => {
     let heroeMock: IHeroe
-    let signup: ISignup
-    let signin: ISignin
-
-    // beforeAll(() => {
-    //     process.env.NODE_ENV = 'test'
-    //     execSync(
-    //         'npx sequelize-cli db:migrate --name 20231205174035-create-users.js',
-    //     )
-
-    //     execSync(
-    //         'npx sequelize-cli db:migrate --name 20231206000802-create-heroes.js',
-    //     )
-    // })
 
     beforeEach(() => {
-        signup = {
-            name: 'Joana Doe',
-            email: 'joanadoe@example.com',
-            password: '754321',
-        }
-
-        signin = {
-            email: 'joanadoe@example.com',
-            password: '754321',
-        }
-
         heroeMock = {
             name: 'Iron-Man',
             rank: HeroesRank.S,
@@ -44,26 +20,10 @@ describe('Heroes routes', () => {
         }
     })
 
-    // afterAll(() => {
-    //     execSync(
-    //         'npx sequelize-cli db:migrate:undoq --name 20231205174035-create-users.js',
-    //     )
-
-    //     execSync(
-    //         'npx sequelize-cli db:migrate:undo --name 20231206000802-create-heroes.js',
-    //     )
-    // })
-
     it('Should be able to create a heroe', async () => {
-        const signupResponse = await request(app)
-            .post('/auth/signup')
-            .send(signup)
-
-        const { token } = signupResponse.body
-
         const { statusCode, body } = await request(app)
             .post('/heroes')
-            .set('Authorization', token)
+            .set('Authorization', env.APP_TOKEN)
             .send(heroeMock)
 
         expect(statusCode).toEqual(200)
@@ -85,5 +45,54 @@ describe('Heroes routes', () => {
             .send(heroeMock)
 
         expect(statusCode).toEqual(403)
+    })
+
+    it('Should be able to read heroes list.', async () => {
+        const { statusCode, body } = await request(app)
+            .get('/heroes')
+            .set('Authorization', env.APP_TOKEN)
+
+        expect(statusCode).toEqual(200)
+        expect(body).toBeTruthy()
+    })
+
+    it('Should respond an error due invalid page.', async () => {
+        const { statusCode } = await request(app)
+            .get('/heroes?page=0')
+            .set('Authorization', env.APP_TOKEN)
+
+        expect(statusCode).toEqual(500)
+    })
+
+    it('Should be able to update a heroe.', async () => {
+        heroeMock.name = 'Jessica Jones'
+        heroeMock.rank = HeroesRank.A
+        const { statusCode, body } = await request(app)
+            .put('/heroes/1')
+            .set('Authorization', env.APP_TOKEN)
+            .send(heroeMock)
+
+        expect(statusCode).toEqual(200)
+        expect(body.name).toEqual('Jessica Jones')
+        expect(body.rank).toEqual(HeroesRank.A)
+    })
+
+    it('Should return an error due required properties.', async () => {
+        heroeMock.name = null as any
+        const { statusCode } = await request(app)
+            .put('/heroes/1')
+            .set('Authorization', env.APP_TOKEN)
+            .send(heroeMock)
+
+        expect(statusCode).toEqual(500)
+    })
+
+    it('Should be able to delete a heroe.', async () => {
+        const { statusCode, body } = await request(app)
+            .delete('/heroes/1')
+            .set('Authorization', env.APP_TOKEN)
+
+        expect(statusCode).toEqual(200)
+        expect(body.status).toEqual(true)
     })
 })

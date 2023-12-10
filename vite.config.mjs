@@ -8,6 +8,7 @@ export default defineConfig({
                 'src/server.ts',
                 'src/interfaces',
                 'src/env',
+                'src/database',
             ],
             include: ['src'],
         },

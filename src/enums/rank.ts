@@ -1,13 +1,13 @@
 export enum HeroesRank {
-    S = 'S',
-    A = 'A',
-    B = 'B',
-    C = 'C',
+    'S' = 4,
+    'A' = 3,
+    'B' = 2,
+    'C' = 1,
 }
 
 export enum ThreatsRank {
-    God = 'God',
-    Dragon = 'Dragon',
-    Tiger = 'Tiger',
-    Wolf = 'Wolf',
+    'God' = 4,
+    'Dragon' = 3,
+    'Tiger' = 2,
+    'Wolf' = 1,
 }

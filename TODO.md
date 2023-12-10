@@ -4,26 +4,24 @@
 
 # Nível 2
 
-<!-- - [ ] CRUD de heróis. -->
-- [x] Generate Seeds
-- [x] Create Heroe
-- [x] Read Heroe
-- [x] Update Heroe
-- [x] Delete Heroe
-- [ ] Testes unitários heroes CRUD
+- [x] CRUD de heróis.
 
 # Nível 3 && Nível 4 && Nível 5
 
-- [ ] Alocação dos heróis
-- [ ] Conectar Socket.io
-- [ ] Definir herói para resolver ameaça
-- [ ] Registrar histórico de ameaça
-- [ ] Agendar o fim da batalha
-- [ ] Definir heróis para resolver ameaça (inteligente)
+- [x] Alocação dos heróis
+- [x] Conectar Socket.io
+- [x] Definir heróis para resolver ameaça (inteligente)
+- [x] Registrar histórico de ameaça
+- [x] Agendar o fim da batalha
 
 # Adicional
 
-- [ ] Criar função para capturar erros
-- [ ] Forçar erro 500 nos testes unitários
+- [x] Generate Seeds
+- [x] Criar função para capturar erros
+- [x] Forçar erro 500 nos testes unitários
+- [x] Criar token de aplicação para Socket.io
+- [x] Criar classe reutilizável paginator helper
+- [x] Test threatsController
+- [ ] Invoke errors on heroesController
+- [ ] Test schedule jobs in occurrenceController
 - [ ] Validar entrada de dados HTTP
-- [ ] Criar token de aplicação para Socket.io
