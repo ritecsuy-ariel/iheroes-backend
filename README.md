@@ -28,6 +28,7 @@ API incrível para o teste técnico ZRP para desenvolvedor fullstack.
 
 - Docker
 - Node.js
+- Socket.io
 - Express
 - Cors
 - Jsonwebtoken
