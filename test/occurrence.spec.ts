@@ -1,5 +1,6 @@
-import { it, describe, expect, beforeAll, beforeEach } from 'vitest'
+import { it, describe, expect, beforeEach } from 'vitest'
 import request from 'supertest'
+
 import app from '../src/app'
 import { IOccurrence } from '../src/interfaces/occurrence'
 import { HeroesRank } from '../src/enums/rank'
@@ -8,10 +9,6 @@ import { env } from '../src/env'
 describe('Occurrence Controller', () => {
     let occurrence: IOccurrence
     let heroeMock: any
-
-    beforeAll(() => {
-        process.env.NODE_ENV = 'test'
-    })
 
     beforeEach(() => {
         occurrence = {
@@ -121,8 +118,8 @@ describe('Occurrence Controller', () => {
             name: 'Star-lord',
             rank: HeroesRank.A,
             available: true,
-            latitude: -20.676105964884176,
-            longitude: -50.43210812419895,
+            latitude: -70.67610596488417,
+            longitude: 44.43210812419895,
         }
 
         await request(app)
@@ -134,8 +131,8 @@ describe('Occurrence Controller', () => {
             name: 'Flash',
             rank: HeroesRank.A,
             available: true,
-            latitude: -27.676105964884176,
-            longitude: -71.43210812419895,
+            latitude: -85.67610596488417,
+            longitude: 41.43210812419895,
         }
 
         await request(app)
@@ -146,8 +143,8 @@ describe('Occurrence Controller', () => {
         occurrence.dangerLevel = 'God' as any
         occurrence.location = [
             {
-                lat: -23.82698775917404,
-                lng: -60.12383578405787,
+                lat: -90.8269877591742,
+                lng: 50.12383578405787,
             },
         ]
 

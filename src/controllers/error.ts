@@ -12,7 +12,7 @@ export class BusinessError extends Error {
 }
 
 export async function handleError(req: Request, res: Response, error: any) {
-    // console.log(error)
+    console.log(error)
     res.status(error?.status || 500)
     return res.send({
         message: error?.message,

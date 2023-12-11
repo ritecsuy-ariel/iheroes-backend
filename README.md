@@ -10,9 +10,9 @@
   </a>
 </p>
 
-Essa API corresponde ao teste técnico da ZRP para posição de desenvolvedor fullstack. 
+API incrível para o teste técnico ZRP para desenvolvedor fullstack. 
 
-# Features
+# Features Incluídas
 
 - Autenticação e cadastro ✅
 
@@ -24,66 +24,167 @@ Essa API corresponde ao teste técnico da ZRP para posição de desenvolvedor fu
 
 - Alocação de heróis inteligente ✅
 
-# Tecnologias
+# Tecnologias Utilizadas
 
+- Docker
 - Node.js
-- Jsonwebtoken
 - Express
 - Cors
-- Node-schedule
+- Jsonwebtoken
 - Postgres
 - MongoDB
-- Docker
+- Node-schedule
 
 # Get Started
 
-O ambiente do projeto está dockerizado no arquivo e pode ser executado com o comando:
+O ambiente do projeto está dockerizado, seguindo o requisito de virtualização.
+
+# Docker
+
+A aplicação utiliza as imagens `postgres` e `mongodb` diretamente do dockerhub e a imagem `app` criada através do arquivo `Dockerfile`.
+
+A imagem `app` tem multiplos passos de criação, separando a responsabilidade de `build` e execução, melhorando aspectos de tamanho e performance da imagem construída. 
+
+## Iniciando a aplicação
+
+Para iniciar a aplicação na porta 3333, executado com o comando:
 
 ```sh
     docker-compose up
 ```
 
-Seguindo boas práticas de segurança da informação, variáveis de ambiente necessárias para executar o projeto não estão incluídas neste repositório.
+## Testes
 
-## Passo 1 - Instalar as dependencias
-
-Para instalar as dependencias utilizando o gerenciador de pacote npm, execute o comando:
+Os testes de aplicação podem ser realizados diretamente no container, execute o comando:
 
 ```sh
-    npm install
+    docker-compose run app npm test
 ```
 
-## Passo 2 - Executar as migrations 
+# Estrutura da aplicação
 
-Execute as migrations de banco de dados para construir as tabelas automáticamente, execute o comando:
+Todo código fonte da aplicação está mantido em `src`.
+
+A aplicação utiliza uma chave `secret.key` para assinar o JWT durante a autenticação do usuário.
+
+# Design Patterns
+
+[Chain of Responsibility](https://refactoring.guru/design-patterns/chain-of-responsibility) é um padrão de design comportamental que permite passar solicitações ao longo de uma cadeia de manipuladores. Ao receber uma solicitação, cada manipulador decide processá-la ou passá-la para o próximo manipulador na cadeia.
+
+[Observer](https://refactoring.guru/design-patterns/observer) é um padrão de design comportamental que permite definir um mecanismo de assinatura para notificar vários objetos sobre quaisquer eventos que aconteçam com o objeto que eles estão observando.
+
+[Builder](https://refactoring.guru/design-patterns/builder) é um padrão de design criacional que permite construir objetos complexos passo a passo. O padrão permite produzir diferentes tipos e representações de um objeto usando o mesmo código de construção.
+
+[Singleton](https://refactoring.guru/design-patterns/singleton) é um padrão de design criacional que permite garantir que uma classe tenha apenas uma instância, ao mesmo tempo que fornece um ponto de acesso global para essa instância.
+
+[Single responsibility principle](https://en.wikipedia.org/wiki/Single_responsibility_principle) cada classe deveria ter apenas uma responsabilidade
+
+[Open-closed principle](https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle) entidades de software (classes, módulos, funções, etc.) devem ser abertas para extensão, mas fechadas para modificação.
+
+# Banco de dados
+
+A aplicação utiliza banco de dados relacional `(postgres)` e não relacional `(mongodb)`, a propósito de demonstração de conhecimento.
+
+O banco de dados SQL pode ser gerenciado pela ferramenta de linha de comando `sequelize-cli`, as configurações estão presentes no diretório `config`.
+
+## Migrations e Seeds
+
+O utilitário `sequelize-cli` está configurado para realizar e reverter alterações no banco de dados utilizando os diretórios `migrations` e `seeders`.
+
+## Rotas de aplicação
+
+As rotas da aplicação podem ser importadas pelo arquivo `zrp-challenge-requests-http.json` utilizando o `insomnia`.
+
+### Descrição das rotas:
+
+### Authenticação
+```sh
+# [POST] Cadastro de novos usuários
+http:localhost:3333/auth/signup   
+``` 
+```sh
+# [POST] Login de usuários cadastrados
+http:localhost:3333/auth/signin  
+```
+### Heróis
+```sh
+# [GET] Leitura de heróis
+http:localhost:3333/heroes  
+``` 
+```sh
+# [POST] Cadastro de heróis
+http:localhost:3333/heroes  
+``` 
+```sh
+# [PUT] Alteração de heróis
+http:localhost:3333/heroes/:id 
+``` 
+```sh
+# [DELETE] Remoção de heróis
+http:localhost:3333/heroes/:id
+``` 
+### Ameaças
+```sh
+# [GET] Lista de ameaças a serem resolvidas
+http:localhost:3333/threats  
+``` 
+### Ocorrencias
+```sh
+# [POST] Cadastro de nova ocorrência
+http:localhost:3333/occurrence
+```
+### Batalhas
+```sh
+# [GET] Lista de batalhas (Ameaças resolvidas)
+http:localhost:3333/battles  
+```
+
+# Scripts 
+
+A seguir uma breve descrição dos scripts:
+
+### Build
+```sh
+    npm run build # Executa o compilador typescript
+```
+
+### Start
+```sh
+    npm start # Inicia a aplicação node javascript
+```
+
+### Lint
+```sh
+    npm run lint # Padroniza o código fonte com regras eslint
+```
+
+### Migration
+```sh
+  npm run migration # Executa comandos DDL no banco de dados postgres
+```
+
+### Seeds
+```sh
+  npm run seeds # Insere uma lista de heróis pré-definida no banco de dados.
+```
+
+### Test
+O framework utilizado para testes é o `vitest` e o seu arquivo de configuração é o `vite.config.mjs`.
+
+O script de test também invoca os scripts `pretest` e `posttest`, responsáveis por configurar o banco de dados de teste da aplicação e reverter as alterações após os testes.
+
 
 ```sh
-    npx sequelize-cli db:migrate
+  npm test # Executa os testes da aplicação
 ```
 
-## Passo 3 Executar as seeds
-
-Execute as seeds do projeto para obter uma inserir diversos heróis no banco de dados, execute o comando
-
+### Dev
 ```sh
-  npx sequelize-cli db:seed:all
+  npm run dev # Executa a aplicação em modo desenvolvimento
 ```
+# Disclaimer
 
-## Passo 4 - Execute os testes
-
-Execute os testes para garantir que a aplicação está funcionando corretamente, execute o comando:
-
-```sh
-    npm test
-```
-
-## Passo 5 -  Iniciar aplicação
-
-O script dev inicia aplicação na porta 3333 em ambiente localhost, execute o comando:
-
-```sh
-    npm run dev
-```
+Para aplicação em modo produção, as variáveis de ambiente necessárias para executar o projeto não devem estar incluídas no repositório. Sendo este apenas um desafio técnico, credenciais estão incluídas.
 
 # Contributions
 

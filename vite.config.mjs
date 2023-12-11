@@ -12,5 +12,6 @@ export default defineConfig({
             ],
             include: ['src'],
         },
+        setupFiles: ['test/dotenv.ts'],
     },
 })

@@ -9,8 +9,7 @@ const postgresOptions: Options = {
     username: env.DB_USERNAME,
     password: env.DB_PASSWORD,
     database: env.DB_NAME,
-    // logging: (...msg) => console.log(msg),
-    logging: false,
+    logging: env.NODE_ENV !== 'test' ? console.log : false,
 }
 
 const sequelize = new Sequelize(postgresOptions)

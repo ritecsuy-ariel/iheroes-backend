@@ -2,17 +2,17 @@
 node_modules
 
 # Build
-dist
+build
 
 # JWT Secret Key
-secret.key 
+# secret.key 
 
 # Environment variables
-.env
-.env.test
+# .env
+# .env.test
 
 # Sequelize config
-config
+# config
 
 # Code coverage reports
 coverage

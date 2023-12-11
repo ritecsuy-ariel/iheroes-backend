@@ -1,11 +1,16 @@
 import { io } from 'socket.io-client'
 
 import app from './app'
+import { execSync } from 'child_process'
+
 import { IOccurrence } from './interfaces/occurrence'
 import { env } from './env'
 
-const port = process.env.PORT || 3333
+execSync('npx sequelize-cli db:migrate')
+execSync('npx sequelize-cli db:seed:all')
+execSync('npx sequelize-cli db:create --env test')
 
+const port = process.env.PORT || 3333
 app.listen(port, () => {
     console.log(`\x1b[32mApp is running on port: ${port} 🚀\x1b[37m`)
 })
