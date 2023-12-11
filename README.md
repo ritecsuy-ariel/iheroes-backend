@@ -48,7 +48,7 @@ A imagem `app` tem multiplos passos de criação, separando a responsabilidade d
 
 ## Iniciando a aplicação
 
-Para iniciar a aplicação na porta 3333, executado com o comando:
+Para iniciar a aplicação na porta 3333, execute com o comando:
 
 ```sh
     docker-compose up
@@ -64,11 +64,13 @@ Os testes de aplicação podem ser realizados diretamente no container, execute 
 
 # Estrutura da aplicação
 
-Todo código fonte da aplicação está mantido em `src`.
+Todo código fonte da aplicação está mantido em `src` e está dividido em responsabilidades. 
 
 A aplicação utiliza uma chave `secret.key` para assinar o JWT durante a autenticação do usuário.
 
 # Design Patterns
+
+Eu utilizei alguns dos padrões de codificação conhecidos:
 
 [Chain of Responsibility](https://refactoring.guru/design-patterns/chain-of-responsibility) é um padrão de design comportamental que permite passar solicitações ao longo de uma cadeia de manipuladores. Ao receber uma solicitação, cada manipulador decide processá-la ou passá-la para o próximo manipulador na cadeia.
 
